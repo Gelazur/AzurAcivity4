@@ -1,0 +1,148 @@
+body {
+font-family: Arial, sans-serif;
+background-color: #f4fff6;
+margin: 0;
+padding: 0;
+}
+
+.container {
+width: 60%;
+margin: auto;
+text-align: center;
+padding: 20px;
+}
+
+nav {
+margin-bottom: 20px;
+}
+
+nav a {
+margin: 0 15px;
+text-decoration: none;
+color: green;
+font-weight: bold;
+}
+
+.card {
+background: white;
+padding: 20px;
+margin: 20px auto;
+width: 70%;
+border-radius: 10px;
+box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+input {
+display: block;
+width: 90%;
+margin: 10px auto;
+padding: 8px;
+border: 1px solid #ccc;
+border-radius: 5px;
+}
+
+textarea {
+display: block;
+width: 90%;
+margin: 10px auto;
+padding: 8px;
+border: 1px solid #ccc;
+border-radius: 5px;
+font-family: Arial, sans-serif;
+}
+
+button {
+padding: 8px 15px;
+margin: 5px;
+border: none;
+background-color: green;
+color: white;
+cursor: pointer;
+border-radius: 5px;
+}
+
+button:hover {
+opacity: 0.8;
+}
+
+button:disabled {
+opacity: 0.5;
+cursor: not-allowed;
+}
+
+.reset {
+background-color: red;
+}
+
+.cancel {
+background-color: orange;
+}
+
+.edit-btn {
+background-color: blue;
+padding: 5px 10px;
+margin: 2px;
+font-size: 12px;
+}
+
+.delete-btn {
+background-color: red;
+padding: 5px 10px;
+margin: 2px;
+font-size: 12px;
+}
+
+.result {
+border: 2px solid green;
+}
+
+.error {
+border: 2px solid red;
+color: red;
+}
+
+.btn-group {
+display: flex;
+justify-content: center;
+margin-top: 10px;
+}
+
+.btn-group button {
+margin: 0 5px;
+}
+
+.api-practice {
+width: 100%;
+}
+
+.posts-table {
+width: 100%;
+border-collapse: collapse;
+margin-top: 20px;
+}
+
+.posts-table th,
+.posts-table td {
+border: 1px solid #ddd;
+padding: 12px;
+text-align: left;
+}
+
+.posts-table th {
+background-color: #4CAF50;
+color: white;
+}
+
+.posts-table tr:nth-child(even) {
+background-color: #f9f9f9;
+}
+
+.posts-table tr:hover {
+background-color: #f0f0f0;
+}
+
+.posts-table button {
+padding: 5px 10px;
+margin: 2px;
+font-size: 12px;
+}
