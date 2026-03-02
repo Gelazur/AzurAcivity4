@@ -6,7 +6,8 @@ const API_URL = "https://jsonplaceholder.typicode.com/posts";
 
 function ApiPractice() {
   const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [nextId, setNextId] = useState(1); // local id counter
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [formData, setFormData] = useState({ title: "", body: "" });
   const [submitting, setSubmitting] = useState(false);
@@ -19,23 +20,11 @@ function ApiPractice() {
     document.title = "API Functionality";
   }, []);
 
-  // GET - Fetch posts on component mount
+  // GET - clear sample data, start with empty list
   useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        setLoading(true);
-        setError(null);
-        const response = await axios.get(`${API_URL}?_limit=10`);
-        setPosts(response.data);
-      } catch (err) {
-        setError(err.message);
-        toast.error("Failed to fetch posts");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchPosts();
+    // no initial data from server, just ensure loading is false
+    setLoading(false);
+    setPosts([]);
   }, []);
 
   // POST - Add new post
@@ -55,8 +44,16 @@ function ApiPractice() {
         userId: 1,
       });
 
-      // Add new post to the beginning of the list
-      setPosts([response.data, ...posts]);
+      // create local post object with sequential id
+      const newPost = {
+        id: nextId,
+        title: formData.title,
+        body: formData.body,
+      };
+      setNextId(nextId + 1);
+
+      // append to end so IDs go from lowest to highest
+      setPosts([...posts, newPost]);
       setFormData({ title: "", body: "" });
       toast.success("Post created successfully!");
     // eslint-disable-next-line no-unused-vars
@@ -93,7 +90,7 @@ function ApiPractice() {
 
       // Update post in the list
       setPosts(
-        posts.map((post) => (post.id === editingId ? response.data : post))
+        posts.map((post) => (post.id === editingId ? { ...post, title: formData.title, body: formData.body } : post))
       );
       setEditingId(null);
       setFormData({ title: "", body: "" });
